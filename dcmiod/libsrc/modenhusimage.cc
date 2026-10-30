@@ -398,7 +398,7 @@ OFCondition IODEnhUSImageModule::setImageType(const DcmIODTypes::IOD_ENHUSIMAGET
     OFCondition result;
     if (checkValue)
     {
-        result = DcmCodeString::checkStringValue(value, "2");
+        result = DcmCodeString::checkStringValue(value, "4");
     }
     if (result.good())
     {
@@ -589,11 +589,9 @@ OFCondition IODEnhUSImageModule::setDepthsOfFocus(const OFVector<Float64>& value
         return EC_MemoryExhausted;
 
     OFCondition result;
-    OFVector<Float64>::const_iterator it = values.begin();
-    while ((it != values.end()) && result.good())
+    for (size_t n = 0; result.good() && (n < values.size()); n++)
     {
-        result = elem->putFloat64(*it);
-        it++;
+        result = elem->putFloat64(values[n], OFstatic_cast(unsigned long, n));
     }
     if (result.bad())
     {
@@ -601,7 +599,9 @@ OFCondition IODEnhUSImageModule::setDepthsOfFocus(const OFVector<Float64>& value
     }
     else
     {
-        result = m_Item->insert(elem);
+        result = m_Item->insert(elem, OFTrue /* replaceOld */);
+        if (result.bad())
+            delete elem;
     }
     return result;
 }

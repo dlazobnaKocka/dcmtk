@@ -46,4 +46,8 @@ OFTEST_REGISTER(dcmiod_tcielabutil_roundtrip_exhaustive);
 OFTEST_REGISTER(dcmiod_palette_color_lut_module);
 OFTEST_REGISTER(dcmiod_palette_color_lut_module_segmented);
 OFTEST_REGISTER(dcmiod_palette_color_lut_module_extra_checks);
+OFTEST_REGISTER(dcmiod_enhus_set_image_type);
+OFTEST_REGISTER(dcmiod_usfor_set_apex_position_twice);
+OFTEST_REGISTER(dcmiod_usfor_set_mapping_matrices_twice);
+OFTEST_REGISTER(dcmiod_enhus_set_depths_of_focus_twice);
 OFTEST_MAIN("dcmiod")

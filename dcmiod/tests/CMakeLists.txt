@@ -10,6 +10,7 @@ DCMTK_ADD_TEST_EXECUTABLE(dcmiod_tests
   tmultiframedim.cc
   tpalette.cc
   tstaticrules.cc
+  tussetters.cc
   tests.cc
 )
 
